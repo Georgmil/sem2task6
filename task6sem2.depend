@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1620252874 source:c:\users\georgy milyushkov\documents\programirovanie\task6sem2\main.cpp
+	"zadanie.hpp"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+
+1620253300 source:c:\users\georgy milyushkov\documents\programirovanie\task6sem2\zadanie.cpp
+	"zadanie.hpp"
+
+1620253208 c:\users\georgy milyushkov\documents\programirovanie\task6sem2\zadanie.hpp
+	"zadanie.hpp"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+
