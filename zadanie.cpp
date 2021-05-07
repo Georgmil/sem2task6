@@ -88,6 +88,13 @@ void popy(listy **heady){
     *heady=(*heady)->next;
     free(tmp);
 }
+void poljaki(char pol[],char a){
+            char q=a;
+            strncat(pol,&q,1);
+            char l=' ';
+            strncat(pol,&l,1);
+
+}
 
 void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
     int length=strlen(stroka),i=0;
@@ -143,27 +150,25 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
         else if(stroka[i]==')'){
             while(verhy(heady)!='('){
                 char q=verhy(heady);
-                strncat(pol,&q,1);
-                char l=' ';
-                strncat(pol,&l,1);
+                poljaki(pol,q);
                 float a=verhx(headx);
                 popx(&headx);
                 float b=verhx(headx);
                 popx(&headx);
 
-                if(verhy(heady)=='+'){
+                if(q=='+'){
                     float res=b+a;
                     pushx(&headx,res);
                     }
-                else if(verhy(heady)=='-'){
+                else if(q=='-'){
                     float res=b-a;
                     pushx(&headx,res);
                     }
-                else if(verhy(heady)=='*'){
+                else if(q=='*'){
                     float res=b*a;
                     pushx(&headx,res);
                     }
-                else if(verhy(heady)=='/'){
+                else if(q=='/'){
                     if(a==0){
                         printf("Error!, cannot devide on 0");
                         error=true;
@@ -199,33 +204,23 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
         }
         else{
             while(prioritet(stroka[i])<=prioritet(verhy(heady))){
-                if(prioritet(stroka[i])==prioritet(verhy(heady))){
                     float a=verhx(headx);
                     popx(&headx);
                     float b=verhx(headx);
                     popx(&headx);
 
                     if(verhy(heady)=='-'){
-                        char q=stroka[i];
-                        strncat(pol,&q,1);
-                        char l=' ';
-                        strncat(pol,&l,1);
+                        poljaki(pol,verhy(heady));
                         float res=b-a;
                         pushx(&headx,res);
                     }
                     else if(verhy(heady)=='+'){
-                        char q=stroka[i];
-                        strncat(pol,&q,1);
-                        char l=' ';
-                        strncat(pol,&l,1);
+                        poljaki(pol,verhy(heady));
                         float res=b+a;
                         pushx(&headx,res);
                     }
                     else if(verhy(heady)=='*'){
-                        char q=stroka[i];
-                        strncat(pol,&q,1);
-                        char l=' ';
-                        strncat(pol,&l,1);
+                        poljaki(pol,verhy(heady));
                         float res=b*a;
                         pushx(&headx,res);
                     }
@@ -235,10 +230,7 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
                             error=true;
                             break;}
                         else{
-                            char q=stroka[i];
-                            strncat(pol,&q,1);
-                            char l=' ';
-                            strncat(pol,&l,1);
+                            poljaki(pol,verhy(heady));
                             float res=b/a;
                             pushx(&headx,res);}
                     }
@@ -246,98 +238,14 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
                     if(heady==NULL){
                         pervij=true;
                     }
-            }
-
-                else{
-                    if(stroka[i]=='='){
-                        while(heady!=NULL){
-                            float a1=verhx(headx);
-                            popx(&headx);
-                            float b1=verhx(headx);
-                            popx(&headx);
-
-                            if(verhy(heady)=='+'){
-                                char q='+';
-                                strncat(pol,&q,1);
-                                char l=' ';
-                                strncat(pol,&l,1);
-                                double res=b1+a1;
-                                pushx(&headx,res);
-                            }
-                            else if(verhy(heady)=='-'){
-                                char q='-';
-                                strncat(pol,&q,1);
-                                char l=' ';
-                                strncat(pol,&l,1);
-                                double res=b1-a1;
-                                pushx(&headx,res);
-                            }
-                            else if(verhy(heady)=='*'){
-                                char q='*';
-                                strncat(pol,&q,1);
-                                char l=' ';
-                                strncat(pol,&l,1);
-                                double res=b1*a1;
-                                pushx(&headx,res);
-                            }
-                            else{
-                               if(a1==0){
-                                    printf("Error!, cannot devide on 0");
-                                    error=true;
-                                    break;
-                                }
-                                else{
-                                    char q='/';
-                                    strncat(pol,&q,1);
-                                    char l=' ';
-                                    strncat(pol,&l,1);
-                                    float res=b1/a1;
-                                    pushx(&headx,res);
-                                }
-                            }
-                            popy(&heady);
-                        }
-                    if(heady==NULL){
-                    pervij=true;
-                    }
                 }
-                else if(verhy(heady)=='*'){
-                        char q='*';
-                        strncat(pol,&q,1);
-                        char l=' ';
-                        strncat(pol,&l,1);
-                        float a=verhx(headx);
-                        popx(&headx);
-                        float b=verhx(headx);
-                        popx(&headx);
-                        float res=b*a;
-                        pushx(&headx,res);
-                        popy(&heady);
-                    }
-                    else if(verhy(heady)=='/'){
-                        char q='/';
-                        strncat(pol,&q,1);
-                        char l=' ';
-                        strncat(pol,&l,1);
-                        float a=verhx(headx);
-                        popx(&headx);
-                        float b=verhx(headx);
-                        popx(&headx);
-                        popy(&heady);
-                        if(b==0){
-                            printf("Error!, cannot devide on 0");
-                                error=true;
-                                break;}
-                        else{
-                            float res=b/a;
-                            pushx(&headx,res);}
-                        }
-            }
-        }pushy(&heady,stroka[i]);
-        pervij=false;
-    }
+            pushy(&heady,stroka[i]);
+            pervij=false;
+        }
+
     i++;
-}
+    }
+
     if(error==false){
         printf("Resultat:\n");
         printlinkx(headx);
@@ -347,5 +255,4 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
     }
 
 }
-
 

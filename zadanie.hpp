@@ -30,6 +30,8 @@ float verhx(listx *nodeptr);
 float predverhx(listx *nodeptr);
 void popx(listx **headx);
 void popy(listy **heady);
+void poljaki(char pol[],char a);
+
 
 
 #endif // ZADANIE_HPP_INCLUDED
