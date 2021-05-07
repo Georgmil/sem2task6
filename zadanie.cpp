@@ -210,17 +210,17 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
                     popx(&headx);
 
                     if(verhy(heady)=='-'){
-                        poljaki(pol,verhy(heady));
+                        poljaki(pol,'-');
                         float res=b-a;
                         pushx(&headx,res);
                     }
                     else if(verhy(heady)=='+'){
-                        poljaki(pol,verhy(heady));
+                        poljaki(pol,'+');
                         float res=b+a;
                         pushx(&headx,res);
                     }
                     else if(verhy(heady)=='*'){
-                        poljaki(pol,verhy(heady));
+                        poljaki(pol,'*');
                         float res=b*a;
                         pushx(&headx,res);
                     }
@@ -230,7 +230,7 @@ void zadanie(listx *headx,listy *heady,char stroka[], char pol[]){
                             error=true;
                             break;}
                         else{
-                            poljaki(pol,verhy(heady));
+                            poljaki(pol,'/');
                             float res=b/a;
                             pushx(&headx,res);}
                     }
