@@ -26,7 +26,6 @@ void printlinkx(listx *nodeptr);
 void printlinky(listy *nodeptr);
 int prioritet(char a);
 char verhy(listy *nodeptr);
-char predverhy(listy *nodeptr);
 float verhx(listx *nodeptr);
 float predverhx(listx *nodeptr);
 void popx(listx **headx);
